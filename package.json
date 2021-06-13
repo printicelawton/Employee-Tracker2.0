@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/printicelawton/Employee-Tracker2.0/issues"
   },
-  "homepage": "https://github.com/printicelawton/Employee-Tracker2.0#readme"
+  "homepage": "https://github.com/printicelawton/Employee-Tracker2.0#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^8.1.0",
+    "mysql": "^2.18.1"
+  }
 }
