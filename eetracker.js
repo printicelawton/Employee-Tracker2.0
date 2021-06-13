@@ -2,7 +2,7 @@
 const mysql = require('mysql2');
 const inquirer = require("inquirer");
 
-// Establish MYSQL connection 
+// Establish MYSQL connection ... ok change to MYSQL2 to fix auth problems.  https://www.npmjs.com/package/mysql2  and https://stackoverflow.com/questions/49194719/authentication-plugin-caching-sha2-password-cannot-be-loaded
 var connection = mysql.createConnection({
     host: "localhost",
 
@@ -35,6 +35,7 @@ function askQuestions() {
         choices: [
             "View all employees",
             "View all departments",
+            "View all roles",
             "Add employee",
             "Add department",
             "Add role",
@@ -53,6 +54,10 @@ function askQuestions() {
 
             case "View all departments":
                 viewDepartments()
+                break;
+
+            case "View all roles":
+                viewRoles()
                 break;
 
             case "Add employee":
@@ -87,6 +92,13 @@ function viewEmployees() {
 
 function viewDepartments() {
     connection.query("SELECT * FROM department", function (err, data) {
+        console.table(data);
+        askQuestions();
+    })
+}
+// add a view all roles function
+function viewRoles() {
+    connection.query("SELECT * FROM role", function (err, data) {
         console.table(data);
         askQuestions();
     })
@@ -140,3 +152,28 @@ function addDepartment() {
 }
 
 // Add prompt and response for roles. Also add primary key for roles table.
+
+function addRole() {
+    inquirer.prompt([
+        {
+            message: "enter title:",
+            type: "input",
+            name: "title"
+        }, {
+            message: "enter salary:",
+            type: "number",
+            name: "salary"
+        }, {
+            message: "enter department ID:",
+            type: "number",
+            name: "department_id"
+        }
+    ]).then(function (response) {
+        connection.query("INSERT INTO role (title, salary, department_id) values (?, ?, ?)", [response.title, response.salary, response.department_id], function (err, data) {
+            if (err) throw err;
+            console.table(data);
+        })
+        askQuestions();
+    });
+
+};
