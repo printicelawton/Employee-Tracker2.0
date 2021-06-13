@@ -1,5 +1,5 @@
 // require dependencies 
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const inquirer = require("inquirer");
 
 // Establish MYSQL connection 
@@ -91,7 +91,7 @@ function viewDepartments() {
         askQuestions();
     })
 }
-
+// Add employees function 
 function addEmployee() {
     inquirer.prompt([{
             type: "input",
@@ -116,7 +116,26 @@ function addEmployee() {
     ]).then(function(res) {
         connection.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)', [res.firstName, res.lastName, res.roleId, res.managerId], function(err, data) {
             if (err) throw err;
-            console.table("Successfully Inserted");
+            console.table("Data Insert Successful");
+            askQuestions();
+        })
+    })
+}
+
+// Repeat pattern above for add departments function 
+
+
+function addDepartment() {
+    inquirer.prompt([{
+        type: "input",
+        name: "department",
+        message: "What is the department that you want to add?"
+    }, ])
+    
+    .then(function(res) {
+        connection.query('INSERT INTO department (name) VALUES (?)', [res.department], function(err, data) {
+            if (err) throw err;
+            console.table("Data Insert Successful");
             askQuestions();
         })
     })
