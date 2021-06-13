@@ -1,6 +1,8 @@
 // require dependencies 
 const mysql = require('mysql2');
 const inquirer = require("inquirer");
+const figlet = require("figlet"); // for display banner
+const chalk = require("chalk"); // for color 
 
 // Establish MYSQL connection ... ok change to MYSQL2 to fix auth problems.  https://www.npmjs.com/package/mysql2  and https://stackoverflow.com/questions/49194719/authentication-plugin-caching-sha2-password-cannot-be-loaded
 var connection = mysql.createConnection({
@@ -28,6 +30,11 @@ connection.connect(function (err) {
 //     console.log(`Welcome to the Employee Management System (EMS)`)
 //     welcome();
 //   }
+
+figlet.textSync('Employee Management System', (err, result) => {
+    console.log(err || result);
+  });
+  
 function askQuestions() {
     inquirer.prompt({
         message: "what would you like to do?",
