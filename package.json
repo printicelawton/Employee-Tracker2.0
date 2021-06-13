@@ -1,0 +1,22 @@
+{
+  "name": "employee-tracker2.0",
+  "version": "1.0.0",
+  "description": "CLI Application that manages a company's employees using node, inquirer, and MySQL.",
+  "main": "eetracker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/printicelawton/Employee-Tracker2.0.git"
+  },
+  "keywords": [
+    "mysql"
+  ],
+  "author": "Printice Lawton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/printicelawton/Employee-Tracker2.0/issues"
+  },
+  "homepage": "https://github.com/printicelawton/Employee-Tracker2.0#readme"
+}
