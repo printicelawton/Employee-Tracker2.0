@@ -152,7 +152,7 @@ function addDepartment() {
 }
 
 // Add prompt and response for roles. Also add primary key for roles table.
-
+// need
 function addRole() {
     inquirer.prompt([
         {
@@ -177,3 +177,4 @@ function addRole() {
     });
 
 };
+
