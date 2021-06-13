@@ -4,14 +4,14 @@ CREATE database eetracker_db;
 USE eetracker_db;
 
 CREATE TABLE role (
-    id INT AUTO_INCREMENT NOT NULL,
+    id INT AUTO_INCREMENT primary key NOT NULL,
     title VARCHAR(30),
     salary DECIMAL(10,2),
     department_id INT(10)
 );
 
 CREATE TABLE department (
-    id INT AUTO_INCREMENT NOT NULL,
+    id INT AUTO_INCREMENT primary key NOT NULL,
     name VARCHAR(30),
     department_id INT(10)
 );

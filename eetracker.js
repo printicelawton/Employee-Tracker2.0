@@ -38,7 +38,7 @@ function askQuestions() {
             "Add employee",
             "Add department",
             "Add role",
-            "Apdate employee role",
+            "Update employee role",
             "QUIT"
         ],
         name: "choice"
@@ -123,8 +123,6 @@ function addEmployee() {
 }
 
 // Repeat pattern above for add departments function 
-
-
 function addDepartment() {
     inquirer.prompt([{
         type: "input",
@@ -140,3 +138,5 @@ function addDepartment() {
         })
     })
 }
+
+// Add prompt and response for roles. Also add primary key for roles table.
