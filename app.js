@@ -19,9 +19,13 @@ var connection = mysql.createConnection({
     database: "eetracker_db"
 });
 
+figlet('Employee Tracker', (err, result) => {
+    console.log(err || result);
+  });
+
 connection.connect(function (err) {
     if (err) throw err;
-    console.log("connected as id " + connection.threadId + "\n");
+    // console.log("connected as id " + connection.threadId + "\n");
     askQuestions();
 });
 
@@ -31,13 +35,11 @@ connection.connect(function (err) {
 //     welcome();
 //   }
 
-figlet.textSync('Employee Management System', (err, result) => {
-    console.log(err || result);
-  });
+
   
 function askQuestions() {
     inquirer.prompt({
-        message: "what would you like to do?",
+        message: "What would you like to do?",
         type: "list",
         choices: [
             "View all employees",
@@ -175,13 +177,46 @@ function addRole() {
             type: "number",
             name: "department_id"
         }
-    ]).then(function (response) {
-        connection.query("INSERT INTO role (title, salary, department_id) values (?, ?, ?)", [response.title, response.salary, response.department_id], function (err, data) {
+    ]).then(function (res) {
+        connection.query("INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)", 
+        [res.title, res.salary, res.department_id], 
+        function (err, data) {
             if (err) throw err;
-            console.table(data);
+            console.table("Successfully added a new role");
         })
         askQuestions();
     });
 
 };
+
+// ]).then(function(res) {
+//     connection.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)', [res.firstName, res.lastName, res.roleId, res.managerId], 
+// function(err, data) {
+//         if (err) throw err;
+//         console.table("Data Insert Successful");
+//         askQuestions();
+//     })
+// })
+
+function updateEmployeeRole() {
+    inquirer.prompt([
+        {
+            message: "Which employee would you like to update? (use first name only for now)",
+            type: "input",
+            name: "name"
+        }, {
+            message: "enter the new role ID:",
+            type: "number",
+            name: "role_id"
+        }
+    ]).then(function (response) {
+        connection.query("UPDATE employee SET role_id = ? WHERE first_name = ?", [response.role_id,], 
+        function (err, data) {
+            if (err) throw err;
+            console.log("Successfully updated");
+        })
+        askQuestions();
+    })
+
+}
 
