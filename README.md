@@ -2,7 +2,7 @@
 
 
 ## Summary 
-Employee Tracker is a CLI applicaiton for building and maintaining companies employee data base. Built on MySQL and leveraging modularity in the structure of Employee Tracker, it can scale appropriatley with a companies growth without reconfiguring the core structure of the internal employee data base. This application can act as a foundation to continue to build upon. Employee allows managers or someone within the company to view all employees, roles, as well as departments. It also allows for adding employees, roles, departments and updating employees all from your CLI.
+Employee Tracker is a CLI applicaiton for building and maintaining companies employee data base. Built on MySQL this application can act as a foundation to continue to build upon. Employee allows managers or someone within the company to view all employees, roles, as well as departments. It also allows for adding employees, roles, departments and updating employees from your CLI.
 
 ## Demo
 
@@ -18,15 +18,15 @@ In order to use this application you will need to first run an npm install in yo
 
  
 ## Technologies Used
-- MySQL: Relational database management system based on SQL – Structured Query Language, used in this applicationt to warehouse and query employee and company data. 
-- Express.js - Used for application set up of middle ware for end point connection between the front end and backend.
+- MySQL: Relational database management system based on SQL – Structured Query Language, used to store and query employee and company data. 
+- Express.js - Middleware for end point connection between the front end and backend.
 - Node.js - Used for package managment and to execute JavaScript code to build command line tool for server-side scripting.
 - Javascript - Used to base functionality of functions and prompts within the application.
 - Git - Version control system to track changes to source code
 - GitHub - Hosts repository that can be deployed to GitHub Pages
  
 ## Code Snippet
-The following code snippet shows the schema that is the base for our link between our app.js file that oeprates the functions for building upon our employee regestry, and data base we create with this same schema setup in our sql workbench. Once these two are connected via calling upon our required mysql package and connection port and host thats configured in our JavaScript. We can then execute the functionality of the application through our JavaScript.
+The following code snippet shows the schema for the database.   
 
 ```sql
 DROP DATABASE IF EXISTS eetracker_db;
