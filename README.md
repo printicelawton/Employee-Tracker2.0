@@ -6,6 +6,7 @@ Employee Tracker is a CLI applicaiton for building and maintaining companies emp
 
 ## Demo
 
+https://user-images.githubusercontent.com/78760719/122151216-27b5ad00-ce2d-11eb-8c9f-d14555ccbeac.mp4
 
 ## Getting Started
 
